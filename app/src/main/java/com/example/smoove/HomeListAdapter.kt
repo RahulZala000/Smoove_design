@@ -5,21 +5,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
-class HomeListAdapter(var listner: HomeFragment, private var mList:ArrayList<HomeListModelItem>): RecyclerView.Adapter<HomeListAdapter.ViewHolder>() {
+class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeListModelItem>): RecyclerView.Adapter<HomeListAdapter.ViewHolder>(){
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       var item=mList[position]
         holder.itemView.setOnClickListener{
             listner.onItemFrom(mList[position])
         }
-        //holder.data(mList[position])
-        holder.main_img.setImageResource()
+        holder.data(mList[position])
+
     }
 
     override fun getItemCount(): Int {
@@ -28,21 +32,49 @@ class HomeListAdapter(var listner: HomeFragment, private var mList:ArrayList<Hom
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
-       // val id: TextView = itemView.findViewById(R.id.id)
-      //  val user_id: TextView = itemView.findViewById(R.id.user_id)
-       // val address_street_name: TextView = itemView.findViewById(R.id.address_street_name)
-       val main_img: ImageView = itemView.findViewById(R.id.main_img)
 
-      /*  fun data(get: HomeListModelItem) {
-         *//*   id.text=get.id.toString()
-            user_id.text=get.user_id.toString()
-            address_street_name.text=get.address_street_name*//*
-            main_img.setImageResource()
+        var streetname: TextView = itemView.findViewById(R.id.streetname)
+        var address: TextView = itemView.findViewById(R.id.address)
+        var money: TextView = itemView.findViewById(R.id.money)
+        var status: TextView = itemView.findViewById(R.id.status)
+        var bathroom: TextView = itemView.findViewById(R.id.bathroom)
+        var bedroom: TextView = itemView.findViewById(R.id.bedroom)
+        var profile:ImageView=itemView.findViewById(R.id.profile)
+        var nearloc: TextView = itemView.findViewById(R.id.nearlocation)
+        var nearloctime: TextView = itemView.findViewById(R.id.nearlocationtime)
+        var recyclerView:RecyclerView=itemView.findViewById(R.id.recycle)
 
-        }*/
+
+        fun data(get: HomeListModelItem) {
+            streetname.text=get.address_area
+            address.text="${get.address_postcode},${get.address_street_name},${get.address_area}"
+            money.text="£ ${get.monthly_price}"
+            status.text=get.status
+            bedroom.text=get.bedrooms.toString()
+            bathroom.text=get.bathrooms.toString()
+            nearloc.text= get.nearest_location
+            nearloctime.text= get.nearest_location_time
+
+            recyclerView.apply {
+                layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                adapter=ImageAdapter(context, get.property_images as ArrayList<PropertyImage>)
+
+                var div=
+                    DividerItemDecoration(context, MaterialDividerItemDecoration.VERTICAL)
+
+                addItemDecoration(div)
+            }
+
+            Glide.with(profile).load(get.user.profile_image)
+                .circleCrop()
+                .placeholder(R.drawable.pro)
+                .error(R.drawable.pro)
+                .fallback(R.drawable.pro)
+                .into(profile)
+        }
+
     }
     interface PostClick {
         fun onItemFrom(clist: HomeListModelItem)
-
     }
 }

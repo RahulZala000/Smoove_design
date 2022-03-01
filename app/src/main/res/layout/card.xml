@@ -8,41 +8,162 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     app:cardElevation="8dp"
-    android:padding="10dp"
     app:cardMaxElevation="5dp"
     android:layout_margin="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/img_card"
+        app:cardCornerRadius="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/main_img"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            tools:ignore="MissingConstraints" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="325dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="350dp"
-            android:layout_height="25dp"
+            android:layout_marginRight="70dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/pro"
+            app:shapeAppearance="@style/circular"
             tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/streetname"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/status"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/circle"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.card.MaterialCardView>
 
+        <TextView
+            android:id="@+id/money"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:paddingStart="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/img_card"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-16dp" />
 
+        <TextView
+            android:id="@+id/address"
+            android:paddingStart="30dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/money"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bedroom" />
+
+            <TextView
+                android:id="@+id/bedroom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:src="@drawable/baththub" />
+
+            <TextView
+                android:id="@+id/bathroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:paddingStart="5dp"
+                app:shapeAppearance="@style/circular"
+                android:src="@drawable/dot" />
+
+            <TextView
+                android:id="@+id/nearlocation"
+                android:layout_width="wrap_content"
+                android:paddingStart="5dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_directions_walk_24" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:paddingStart="5dp"
+                android:src="@drawable/dot"
+                app:shapeAppearance="@style/circular" />
+
+            <TextView
+                android:id="@+id/nearlocationtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.cardview.widget.CardView>
