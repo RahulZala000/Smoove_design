@@ -30,17 +30,9 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
         super.onViewCreated(view, savedInstanceState)
 
         showdata()
-       // showimg()
     }
 
-   /* private fun showimg() {
 
-        recyclerView.apply {
-            images= Gson().fromJson(getdata(requireContext()),PropertyImg::class.java)
-            layoutManager= LinearLayoutManager(requireContext())
-            adapter=ImageAdapter(this@HomeFragment,images)
-        }
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,7 +84,8 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
     override fun onItemFrom(clist: HomeListModelItem) {
         Toast.makeText(context,clist.id.toString(),Toast.LENGTH_SHORT).show()
 
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist.id))
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist.toString()
+        ))
     }
 
     override fun OnImgClick(clist: PropertyImage) {
