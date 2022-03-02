@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/drawable/cir.xml" value="0.205" />
         <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/drawable/circle.xml" value="0.171" />
         <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/drawable/data__shape.xml" value="0.18" />
         <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/card.xml" value="0.33" />
         <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/fragment_property_data.xml" value="0.33" />
+        <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/fragment_property_data.xml" value="0.25" />
+        <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/imges.xml" value="0.1" />
         <entry key="..\:/Users/HACKER/StudioProjects/Smoove_design/app/src/main/res/layout/propertydata.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/drawable/cir.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3037037037037037" />
