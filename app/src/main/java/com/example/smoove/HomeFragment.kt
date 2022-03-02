@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -39,6 +40,8 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar?.title="Smoove"
+
         var root=inflater.inflate(R.layout.fragment_home, container, false)
 
 
@@ -55,6 +58,7 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
             layoutManager= LinearLayoutManager(requireContext())
             adapter=HomeListAdapter(this@HomeFragment,user.properties)
         }
+
     }
 
     private fun getdata(context: Context): String? {

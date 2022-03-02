@@ -8,25 +8,35 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
+import com.google.android.gms.maps.SupportMapFragment
 import com.bumptech.glide.Glide
 import com.example.smoove.databinding.FragmentPropertyDataBinding
-import com.google.android.material.divider.MaterialDividerItemDecoration
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_property_data.*
 
-class PropertyDataFragment : Fragment() {
+class PropertyDataFragment : Fragment() ,OnMapReadyCallback{
 
-    lateinit var binding: FragmentPropertyDataBinding
+    lateinit var fusedlocation: FusedLocationProviderClient
+    var request_code = 101
+    var snap: SnapHelper?=null
 
    val args:PropertyDataFragmentArgs by navArgs<PropertyDataFragmentArgs>()
     lateinit var data:HomeListModelItem
+    private lateinit var map: GoogleMap
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -34,7 +44,27 @@ class PropertyDataFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         showimg()
+        showfes()
+        showimg1()
 
+    }
+
+    private fun showimg1() {
+        image_recycle1.apply {
+            layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+            adapter=ImageAdapter(context, data.property_images as ArrayList<PropertyImage>)
+        }
+        snap= LinearSnapHelper()
+        (snap as LinearSnapHelper).attachToRecyclerView(image_recycle)
+    }
+
+    private fun showfes() {
+       keyfes.apply {
+           layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+           adapter=KeyFesAdapter(data.key_features as ArrayList<KeyFeature>)
+       }
+        snap= LinearSnapHelper()
+        (snap as LinearSnapHelper).attachToRecyclerView(image_recycle1)
     }
 
     private fun showimg() {
@@ -49,9 +79,15 @@ class PropertyDataFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         var root=inflater.inflate(R.layout.fragment_property_data, container, false)
         data=args.propertydata
-        binding=FragmentPropertyDataBinding.inflate(layoutInflater)
+    //    binding=FragmentPropertyDataBinding.inflate(layoutInflater)
+
+        val mapFragment = SupportMapFragment.newInstance()
+        mapFragment.getMapAsync(this)
+
+        //binding.username.text=data.user.name
 
         var username:TextView=root.findViewById(R.id.username)
         var status:TextView=root.findViewById(R.id.user_status)
@@ -61,6 +97,17 @@ class PropertyDataFragment : Fragment() {
         var daylisted:TextView=root.findViewById(R.id.daylisted)
         var description:TextView=root.findViewById(R.id.desc)
         var add:TextView=root.findViewById(R.id.location)
+        var nearloc:TextView=root.findViewById(R.id.nearlocation)
+        var nearloctime:TextView=root.findViewById(R.id.nearlocationtime)
+        var listtype:TextView=root.findViewById(R.id.list_type)
+        var pro_type:TextView=root.findViewById(R.id.pro_type)
+        var move_date:TextView=root.findViewById(R.id.move_date)
+        var stay:TextView=root.findViewById(R.id.stay)
+        var type:TextView=root.findViewById(R.id.type)
+        var student:TextView=root.findViewById(R.id.student)
+        var deposit:TextView=root.findViewById(R.id.deposit)
+        var money:TextView=root.findViewById(R.id.month_money)
+
 
         //binding.username.text=data.user.name
         username.text=data.user.name
@@ -70,7 +117,16 @@ class PropertyDataFragment : Fragment() {
         daylisted.text=data.free_within_days
         description.text=data.description
         add.text="${data.address_postcode},${data.address_street_name},${data.address_area},${data.address_city}"
-
+        nearloc.text=data.nearest_location
+        nearloctime.text=data.nearest_location_time
+        listtype.text=data.listing_type
+        pro_type.text=data.property_type
+        move_date.text=data.move_in_date
+        stay.text=data.length_of_stay
+        type.text=data.room_type
+        student.text= data.is_suitable_for_student.toString()
+        deposit.text=data.deposit_amount.toString()
+        money.text="£ ${data.monthly_price}"
 
 
 
@@ -82,8 +138,16 @@ class PropertyDataFragment : Fragment() {
             .fallback(R.drawable.pro)
             .into(profile)
 
-
-
         return root
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        val currentLatLng = LatLng(data.latitude, data.longitude)
+        map.addMarker(MarkerOptions().position(currentLatLng).title("My Location"))
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+
+        val nearlocLatLng = LatLng(data.nearest_latitude, data.nearest_longitude)
+        map.addMarker(MarkerOptions().position(nearlocLatLng).title("Near Location"))
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(nearlocLatLng, 12f))
     }
 }

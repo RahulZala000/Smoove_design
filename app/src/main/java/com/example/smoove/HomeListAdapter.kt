@@ -5,9 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.bumptech.glide.Glide
 import com.google.android.material.divider.MaterialDividerItemDecoration
 
@@ -44,6 +42,7 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
         var nearloctime: TextView = itemView.findViewById(R.id.nearlocationtime)
         var recyclerView:RecyclerView=itemView.findViewById(R.id.recycle)
 
+        var snap: SnapHelper?=null
 
         fun data(get: HomeListModelItem) {
             streetname.text=get.address_area
@@ -64,6 +63,8 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
 
                 addItemDecoration(div)
             }
+            snap= LinearSnapHelper()
+            (snap as LinearSnapHelper).attachToRecyclerView(recyclerView)
 
             Glide.with(profile).load(get.user.profile_image)
                 .circleCrop()
@@ -72,7 +73,6 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
                 .fallback(R.drawable.pro)
                 .into(profile)
         }
-
     }
     interface PostClick {
         fun onItemFrom(clist: HomeListModelItem)
