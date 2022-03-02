@@ -20,6 +20,6 @@
         android:label="fragment_property_data"
         tools:layout="@layout/fragment_property_data" >
         <argument android:name="properties"
-            app:argType="com.example.smoove.HomeListModel" />
+            app:argType="com.example.smoove.HomeListModelItem" />
     </fragment>
 </navigation>

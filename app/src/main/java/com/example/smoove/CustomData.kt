@@ -1,10 +1,11 @@
 package com.example.smoove
 
+import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class HomeListModelItem(
+data class CustomData(
     var address_area: String,
     var address_city: String,
     var address_country_code: String,
@@ -20,7 +21,6 @@ data class HomeListModelItem(
     var id: Int,
     var is_free_to_contact: Boolean,
     var is_suitable_for_student: Int,
-    var key_features:List<KeyFeature>,
     var latitude: Double,
     var length_of_stay: String,
     var listing_type: String,
@@ -33,16 +33,13 @@ data class HomeListModelItem(
     var nearest_location_type: String,
     var nearest_longitude: Double,
     var person_price: Int,
-    var property_images: List<PropertyImage>,
     var property_type: String,
     var property_url: String,
-    var property_videos: List<PropertyVideo>,
     var room_type: String,
     var slug: String,
     var status: String,
     var type: String,
     var updated_at: String,
     var updated_by: Int,
-    var user: User,
     var user_id: Int
 ):Parcelable

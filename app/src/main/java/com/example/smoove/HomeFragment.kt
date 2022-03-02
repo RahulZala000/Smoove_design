@@ -84,13 +84,11 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
     override fun onItemFrom(clist: HomeListModelItem) {
         Toast.makeText(context,clist.id.toString(),Toast.LENGTH_SHORT).show()
 
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist.toString()
-        ))
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist))
     }
 
     override fun OnImgClick(clist: PropertyImage) {
         Toast.makeText(context,clist.id.toString(),Toast.LENGTH_SHORT).show()
     }
-
 
 }
