@@ -1,10 +1,14 @@
 package com.example.smoove
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class PropertyVideo(
-    var id: Int,
+    var id: String,
     var path: String,
-    var property_id: Int,
+    var property_id: String,
     var thumbnail: String,
     var type: String,
-    var user_id: Int
-)
+    var user_id: String
+):Parcelable

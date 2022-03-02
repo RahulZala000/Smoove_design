@@ -1,5 +1,9 @@
 package com.example.smoove
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class KeyFeature(
     var color_icon: String,
     var color_icon_url: String,
@@ -9,4 +13,4 @@ data class KeyFeature(
     var name: String,
     var pivot: Pivot,
     var type: String
-)
+):Parcelable

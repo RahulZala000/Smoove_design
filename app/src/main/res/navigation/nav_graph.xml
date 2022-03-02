@@ -19,7 +19,8 @@
         android:name="com.example.smoove.PropertyDataFragment"
         android:label="fragment_property_data"
         tools:layout="@layout/fragment_property_data" >
-        <argument android:name="properties"
+        <argument
+            android:name="propertydata"
             app:argType="com.example.smoove.HomeListModelItem" />
     </fragment>
 </navigation>

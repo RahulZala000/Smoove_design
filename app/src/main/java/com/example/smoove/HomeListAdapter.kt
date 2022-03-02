@@ -20,7 +20,7 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener{
-            listner.onItemFrom(mList[position])
+            listner.onItemFrom(mList[holder.layoutPosition])
         }
         holder.data(mList[position])
 

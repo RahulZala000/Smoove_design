@@ -2,4 +2,5 @@
     <string name="app_name">Smoove</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="map_api_key">AIzaSyBtHh3Vk4sqmxwObyqE255xAzyQIO8F4y0</string>
 </resources>

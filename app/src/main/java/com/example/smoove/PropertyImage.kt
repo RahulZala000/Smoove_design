@@ -1,5 +1,9 @@
 package com.example.smoove
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class PropertyImage(
     var id: Int,
     var path: String,
@@ -7,4 +11,4 @@ data class PropertyImage(
     var thumbnail: String,
     var type: String,
     var user_id: Int
-)
+):Parcelable

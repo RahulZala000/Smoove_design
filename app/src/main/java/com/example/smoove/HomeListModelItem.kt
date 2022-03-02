@@ -1,8 +1,8 @@
 package com.example.smoove
 
 import android.os.Parcelable
+import androidx.navigation.NavType
 import kotlinx.android.parcel.Parcelize
-
 @Parcelize
 data class HomeListModelItem(
     var address_area: String,
