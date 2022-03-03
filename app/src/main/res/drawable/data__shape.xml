@@ -5,8 +5,10 @@
         android:shape="rectangle"
         android:useLevel="true">
         <corners
-            android:topLeftRadius="5dp"
-            android:topRightRadius="5dp"/>
+            android:topLeftRadius="45dp"
+            android:topRightRadius="45dp"/>
+        <solid android:color="@android:color/white" />
+        <stroke android:width="3dp" android:color="@color/white" />
     </shape>
 </item>
 

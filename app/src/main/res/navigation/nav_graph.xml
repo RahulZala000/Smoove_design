@@ -21,6 +21,7 @@
         tools:layout="@layout/fragment_property_data" >
         <argument
             android:name="propertydata"
-            app:argType="com.example.smoove.HomeListModelItem" />
+            app:argType="com.example.smoove.HomeListModelItem"
+            app:nullable="true" />
     </fragment>
 </navigation>

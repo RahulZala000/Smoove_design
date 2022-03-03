@@ -49,7 +49,6 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
 
         Log.d("userdata",user.properties.size.toString())
 
-        Toast.makeText(context,user.properties.size.toString(), Toast.LENGTH_SHORT).show()
         return root
     }
 
@@ -58,7 +57,6 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
             layoutManager= LinearLayoutManager(requireContext())
             adapter=HomeListAdapter(this@HomeFragment,user.properties)
         }
-
     }
 
     private fun getdata(context: Context): String? {
@@ -88,11 +86,11 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
     override fun onItemFrom(clist: HomeListModelItem) {
         Toast.makeText(context,clist.id.toString(),Toast.LENGTH_SHORT).show()
 
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist))
+       findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPropertyDataFragment(clist))
     }
 
     override fun OnImgClick(clist: PropertyImage) {
-        Toast.makeText(context,clist.id.toString(),Toast.LENGTH_SHORT).show()
+
     }
 
 }
