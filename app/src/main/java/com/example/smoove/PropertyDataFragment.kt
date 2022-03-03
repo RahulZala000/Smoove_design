@@ -131,7 +131,7 @@ class PropertyDataFragment : Fragment() {
         map.getUiSettings().setMyLocationButtonEnabled(false);
         map.setMyLocationEnabled(true);
 */
-        if(data.user.profile_image!=null)
+        if(data.user.profile_image_url!=null)
         {
             Glide.with(profile).load(data.user.profile_image)
                 .circleCrop()

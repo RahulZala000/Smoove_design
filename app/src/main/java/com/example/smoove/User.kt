@@ -7,6 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class User(
     var id: String,
     var name: String,
-    var profile_image: String,
-    var profile_image_url: String
+    var profile_image: String?,
+    var profile_image_url: String?
 ):Parcelable
