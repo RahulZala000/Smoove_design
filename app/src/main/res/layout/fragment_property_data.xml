@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mapfragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PropertyDataFragment">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="10dp"
-
+    tools:context=".PropertyDataFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -357,15 +352,12 @@
             app:cardMaxElevation="5dp"
             android:layout_margin="10dp">
 
-
-
-        <fragment
-            android:id="@+id/mapp"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+            <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:ignore="DuplicateIds" />
-
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="393dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -454,7 +446,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/img_card"
             app:cardCornerRadius="10dp"
-            android:layout_margin="25dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -462,7 +454,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/image_recycle1"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 tools:ignore="MissingConstraints" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -702,5 +694,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>

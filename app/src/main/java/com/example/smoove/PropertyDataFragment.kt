@@ -15,26 +15,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.MapView
 import kotlinx.android.synthetic.main.fragment_property_data.*
+import kotlinx.android.synthetic.main.temp.*
 
 
 class PropertyDataFragment : Fragment() {
 
-    lateinit var fusedlocation: FusedLocationProviderClient
+
+   lateinit var map:GoogleMap
     var request_code = 101
     var snap: SnapHelper?=null
 
    val args:PropertyDataFragmentArgs by navArgs<PropertyDataFragmentArgs>()
     lateinit var data:HomeListModelItem
-    var map: GoogleMap?=null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +72,6 @@ class PropertyDataFragment : Fragment() {
         }
     }
 
-    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,8 +82,7 @@ class PropertyDataFragment : Fragment() {
         data=args.propertydata!!
     //    binding=FragmentPropertyDataBinding.inflate(layoutInflater)
 
-     /*   val mapFragment = SupportMapFragment.newInstance()
-        mapFragment.getMapAsync(this)*/
+
 
         //binding.username.text=data.user.name
 
@@ -110,7 +104,7 @@ class PropertyDataFragment : Fragment() {
         var student:TextView=root.findViewById(R.id.student)
         var deposit:TextView=root.findViewById(R.id.deposit)
         var money:TextView=root.findViewById(R.id.month_money)
-        var frag:View=root.findViewById(R.id.mapfragment)
+        var mapv:MapView=root.findViewById(R.id.map)
 
 
         username.text=data.user.name
@@ -133,6 +127,10 @@ class PropertyDataFragment : Fragment() {
 
         Toast.makeText(context,data.user.name,Toast.LENGTH_SHORT).show()
 
+        /*map = mapView.getMap();
+        map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.setMyLocationEnabled(true);
+*/
         if(data.user.profile_image!=null)
         {
             Glide.with(profile).load(data.user.profile_image)
@@ -144,33 +142,9 @@ class PropertyDataFragment : Fragment() {
         }
 
 
-     /*   val mapFragment = childFragmentManager.findFragmentById(R.id.mapp) as SupportMapFragment?
-        mapFragment?.getMapAsync( object :OnMapReadyCallback{
-            override fun onMapReady(p0: GoogleMap) {
-                map?.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-                map!!.clear()
-                val googlePlex = CameraPosition.builder()
-                    .target(LatLng(37.4219999, -122.0862462))
-                    .zoom(10f)
-                    .bearing(0f)
-                    .tilt(45f)
-                    .build()
-               // map!!.uiSettings.isZoomControlsEnabled = true
-
-                val currentLatLng = LatLng(data.latitude, data.longitude)
-                map!!.addMarker(MarkerOptions().position(currentLatLng).title("My Location"))
-                map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
-
-                val nearlocLatLng = LatLng(data.nearest_latitude, data.nearest_longitude)
-                map!!.addMarker(MarkerOptions().position(nearlocLatLng).title("Near Location"))
-                map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(nearlocLatLng, 12f))
-            }
-
-        } )*/
-
 
         return root
     }
+
 
 }
