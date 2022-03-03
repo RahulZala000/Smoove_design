@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -18,7 +17,6 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import kotlinx.android.synthetic.main.fragment_property_data.*
-import kotlinx.android.synthetic.main.temp.*
 
 
 class PropertyDataFragment : Fragment() {
@@ -124,8 +122,6 @@ class PropertyDataFragment : Fragment() {
         student.text= data.is_suitable_for_student.toString()
         deposit.text=data.deposit_amount.toString()
         money.text="£ ${data.monthly_price}"
-
-        Toast.makeText(context,data.user.name,Toast.LENGTH_SHORT).show()
 
         /*map = mapView.getMap();
         map.getUiSettings().setMyLocationButtonEnabled(false);
