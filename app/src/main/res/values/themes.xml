@@ -20,4 +20,15 @@
     <style name="circular">
         <item name="cornerSize">50%</item>
     </style>
+
+    <!-- res/values-v19/styles.xml -->
+    <style name="AppThem" parent="Base.CardView">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <!-- res/values-v21/styles.xml -->
+    <style name="AppTheme" parent="Base.CardView">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>

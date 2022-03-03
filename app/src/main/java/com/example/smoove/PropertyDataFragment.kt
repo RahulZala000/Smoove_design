@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -125,7 +124,6 @@ class PropertyDataFragment : Fragment() {
         deposit.text=data.deposit_amount.toString()
         money.text="£ ${data.monthly_price}"
 
-        Toast.makeText(context,data.user.name,Toast.LENGTH_SHORT).show()
 
         /*map = mapView.getMap();
         map.getUiSettings().setMyLocationButtonEnabled(false);
