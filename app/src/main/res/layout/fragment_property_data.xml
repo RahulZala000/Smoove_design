@@ -64,13 +64,13 @@
 
             <ImageView
                 android:id="@+id/pro_s"
-                android:layout_marginLeft="280dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginRight="30dp"
                 android:padding="4dp"
                 android:background="@drawable/profile"
                 android:elevation="10dp"
-                android:layout_width="40dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="75dp"
                 android:layout_marginTop="325dp"
                 android:src="@drawable/pro"
                 app:layout_constraintBottom_toTopOf="@+id/image_recycle"
