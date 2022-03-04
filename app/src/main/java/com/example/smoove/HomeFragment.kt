@@ -46,8 +46,6 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
 
        user= Gson().fromJson(getdata(requireContext()),HomeListModel::class.java)
 
-        Log.d("userdata",user.properties.size.toString())
-
         return root
     }
 
@@ -59,7 +57,7 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
     }
 
     private fun getdata(context: Context): String? {
-        var json:String?=null
+        var json:String?
         var input: InputStream?=null
         try{
             input=context.assets.open("HomeList.json")
@@ -69,6 +67,7 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
             var buffer=ByteArray(size)
 
             input.read(buffer)
+
 
             json=String(buffer)
             return json

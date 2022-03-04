@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_property_data.*
 import kotlinx.android.synthetic.main.temp.*
 
@@ -23,9 +24,9 @@ import kotlinx.android.synthetic.main.temp.*
 class PropertyDataFragment : Fragment() {
 
 
-   lateinit var map:GoogleMap
     var request_code = 101
     var snap: SnapHelper?=null
+
 
    val args:PropertyDataFragmentArgs by navArgs<PropertyDataFragmentArgs>()
     lateinit var data:HomeListModelItem
@@ -79,11 +80,6 @@ class PropertyDataFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         var root=inflater.inflate(R.layout.fragment_property_data, container, false)
         data=args.propertydata!!
-    //    binding=FragmentPropertyDataBinding.inflate(layoutInflater)
-
-
-
-        //binding.username.text=data.user.name
 
         var username:TextView=root.findViewById(R.id.username)
         var status:TextView=root.findViewById(R.id.user_status)
@@ -103,7 +99,7 @@ class PropertyDataFragment : Fragment() {
         var student:TextView=root.findViewById(R.id.student)
         var deposit:TextView=root.findViewById(R.id.deposit)
         var money:TextView=root.findViewById(R.id.month_money)
-        var mapv:MapView=root.findViewById(R.id.map)
+        var profile_s:ImageView=root.findViewById(R.id.pro_s)
 
 
         username.text=data.user.name
@@ -124,11 +120,27 @@ class PropertyDataFragment : Fragment() {
         deposit.text=data.deposit_amount.toString()
         money.text="£ ${data.monthly_price}"
 
+        var mapfrg=childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        var mapf=childFragmentManager.findFragmentById(R.id.map)as SupportMapFragment
 
-        /*map = mapView.getMap();
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.setMyLocationEnabled(true);
-*/
+        mapf.getMapAsync(object : OnMapReadyCallback
+        {
+            override fun onMapReady(map: GoogleMap) {
+
+                map.mapType=GoogleMap.MAP_TYPE_NORMAL
+
+                val currentLatLng = LatLng(data.latitude, data.longitude)
+                map.addMarker(MarkerOptions().position(currentLatLng).title("My Location"))
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+
+                var near=LatLng(data.nearest_latitude,data.nearest_longitude)
+                map.addMarker(MarkerOptions().position(near).title(data.nearest_location_type))
+
+            }
+         })
+
+
+
         if(data.user.profile_image_url!=null)
         {
             Glide.with(profile).load(data.user.profile_image)
@@ -139,10 +151,11 @@ class PropertyDataFragment : Fragment() {
                 .into(profile)
         }
 
-
+        Glide.with(profile_s).load(data.user.profile_image)
+            .centerCrop()
+            .placeholder(R.drawable.pro)
+            .into(profile_s)
 
         return root
     }
-
-
 }

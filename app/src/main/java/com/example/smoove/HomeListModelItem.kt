@@ -11,6 +11,7 @@ data class HomeListModelItem(
     var address_postcode: String,
     var address_street_name: String,
     var bathrooms: Int,
+    var nearest_location_type:String?,
     var bedrooms: Int,
     var deposit_amount: Int,
     var description: String,

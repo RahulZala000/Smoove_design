@@ -10,6 +10,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingConstraints">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +43,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <ScrollView
         android:id="@+id/scroll"
@@ -57,6 +63,12 @@
             tools:ignore="MissingConstraints" />
 
             <ImageView
+                android:id="@+id/pro_s"
+                android:layout_marginLeft="280dp"
+                android:layout_marginRight="30dp"
+                android:padding="4dp"
+                android:background="@drawable/profile"
+                android:elevation="10dp"
                 android:layout_width="40dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="325dp"
@@ -392,12 +404,11 @@
             app:cardMaxElevation="5dp"
             android:layout_margin="10dp">
 
-            <com.google.android.gms.maps.MapView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="393dp" />
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 

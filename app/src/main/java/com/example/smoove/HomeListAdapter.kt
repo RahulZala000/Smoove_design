@@ -41,6 +41,7 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
         var nearloc: TextView = itemView.findViewById(R.id.nearlocation)
         var nearloctime: TextView = itemView.findViewById(R.id.nearlocationtime)
         var recyclerView:RecyclerView=itemView.findViewById(R.id.recycle)
+        var profile_s:ImageView=itemView.findViewById(R.id.pro_s)
 
         var snap: SnapHelper?=null
 
@@ -72,6 +73,11 @@ class HomeListAdapter(var listner: HomeFragment, private var mList: List<HomeLis
                 .error(R.drawable.pro)
                 .fallback(R.drawable.pro)
                 .into(profile)
+
+           Glide.with(profile_s).load(get.user.profile_image)
+               .centerCrop()
+               .placeholder(R.drawable.pro)
+                .into(profile_s)
         }
     }
     interface PostClick {

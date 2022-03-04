@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,11 +19,24 @@
     app:cardMaxElevation="5dp"
     android:layout_margin="10dp">
 
+
+
+    <ImageView
+        android:id="@+id/pro_s"
+        android:layout_width="45dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginRight="30dp"
+        android:padding="4dp"
+        android:background="@drawable/profile"
+        android:layout_marginTop="150dp"
+        android:elevation="10dp"
+        tools:ignore="MissingConstraints" />
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/img_card"
@@ -138,7 +158,7 @@
             <TextView
                 android:id="@+id/nearlocation"
                 android:layout_width="wrap_content"
-                android:paddingStart="5dp"
+                android:paddingStart="2dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black" />
 
@@ -150,7 +170,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:paddingStart="5dp"
+                android:paddingStart="3dp"
                 android:src="@drawable/dot"
                 app:shapeAppearance="@style/circular" />
 
@@ -158,7 +178,7 @@
                 android:id="@+id/nearlocationtime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="5dp"
+                android:paddingStart="2dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -168,3 +188,4 @@
 
 
 </androidx.cardview.widget.CardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
