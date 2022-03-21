@@ -120,7 +120,7 @@ class PropertyDataFragment : Fragment() {
         deposit.text=data.deposit_amount.toString()
         money.text="£ ${data.monthly_price}"
 
-        var mapfrg=childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+
         var mapf=childFragmentManager.findFragmentById(R.id.map)as SupportMapFragment
 
         mapf.getMapAsync(object : OnMapReadyCallback
