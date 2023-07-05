@@ -54,7 +54,8 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
 
         Log.d("userdata",user.properties.size.toString())
 
-        Toast.makeText(context,user.properties.size.toString(), Toast.LENGTH_SHORT).show()
+        if (user!=null)
+         Toast.makeText(context,user.properties.size.toString(), Toast.LENGTH_SHORT).show()
         return root
     }
 
@@ -69,7 +70,7 @@ class HomeFragment : Fragment(),HomeListAdapter.PostClick,ImageAdapter.ImageClic
         var json:String?=null
         var input: InputStream?=null
         try{
-            input=context.assets.open("HomeList.json")
+            input=context.assets.open("smoove.json")
 
             var size=input.available()
 
